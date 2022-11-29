@@ -1,0 +1,12 @@
+/node_modules/
+/build/
+/lib/
+/docs/
+/dist/
+.idea/*
+.env
+cd.sql
+test/.DS_Store
+migrations/.DS_Store
+.DS_Store
+.vscode

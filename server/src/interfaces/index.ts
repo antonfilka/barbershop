@@ -1,0 +1,69 @@
+import Joi from 'joi';
+
+export interface ArrayResponse<T> {
+  results: T[];
+  metadata: {
+    count: number;
+    limit: number;
+    offset: number;
+  };
+}
+
+export interface EndpointSchema {
+  params?: Joi.Schema;
+
+  body?: Joi.Schema;
+
+  query?: Joi.Schema;
+
+  response: {
+    [status: string]: ResponseEndpointSchema;
+  };
+}
+
+export interface ResponseEndpointSchema {
+  schema: Joi.Schema;
+  swaggerOptions?: EndpointSchemaSwaggerOptions;
+}
+
+export interface EndpointSchemaSwaggerOptions {
+  description?: string;
+}
+
+// responsible for locating interfaces with data
+// added to `res.locals`
+//
+// Usage example:
+// const controller = (req: Request, res: Response<any, ResponseLocals.AuthenticatedUser>) => {
+//   const { userId } = res.locals;
+// };
+export namespace ResponseLocals {
+  export interface AuthenticatedUser {
+    userId: number;
+  }
+}
+
+export interface Pagination {
+  limit: number;
+  offset: number;
+}
+
+export interface GenerateTokensAtributes {
+  name: string;
+  surname: string;
+  email: string;
+}
+
+export interface UserLoginAttributes {
+  email: string;
+  password: string;
+}
+
+export interface UserUpdateAttributes {
+  position?: string;
+  startDate?: Date;
+  endDate?: Date;
+  dateOfBirth?: Date;
+  phoneNumber?: string;
+  contactInfo?: string;
+}
