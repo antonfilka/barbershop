@@ -5,10 +5,10 @@ import { ThemeProvider } from '@emotion/react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from 'store';
 import { theme } from 'styles';
-import { MainLayout } from 'layouts';
 
 import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import { MainLayout } from '../../layouts';
 
 export function App() {
   return (

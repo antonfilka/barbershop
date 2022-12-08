@@ -64,6 +64,7 @@ export function SignUpForm() {
     if (data.status === 'fulfilled') {
       setEmailError('');
       reset({ name: '', surname: '', email: '', password: '', passwordConfirm: '' });
+      navigate(APP_ROUTES.SIGN_IN);
     } else if (errorData.status === 409) {
       setEmailError(errorData.data.msg);
     }

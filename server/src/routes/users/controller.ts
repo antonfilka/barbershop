@@ -32,6 +32,8 @@ class UsersController {
       httpOnly: true,
     });
 
+    console.log(userData);
+
     res.json(userData);
   }
 
@@ -97,6 +99,38 @@ class UsersController {
     await userService.deleteteUser(id);
 
     res.json({ message: 'User deleted' });
+  }
+
+  async getAppointments(
+    req: Request,
+    res: Response<unknown, ResponseLocals.AuthenticatedUser>,
+    next: NextFunction,
+  ): Promise<void> {
+    const result = await userService.getAppointments();
+
+    res.json({ appointments: result });
+  }
+
+  async getMyAppointments(
+    req: Request,
+    res: Response<unknown, ResponseLocals.AuthenticatedUser>,
+    next: NextFunction,
+  ): Promise<void> {
+    const { id } = req.body;
+    const result = await userService.getMyAppointments(id);
+
+    res.json({ appointments: result });
+  }
+
+  async createUserAppointment(
+    req: Request,
+    res: Response<unknown, ResponseLocals.AuthenticatedUser>,
+    next: NextFunction,
+  ): Promise<void> {
+    const { id, date, appointmentId } = req.body;
+    await userService.createUserAppointment(id, date, appointmentId);
+
+    res.json({ success: true });
   }
 }
 

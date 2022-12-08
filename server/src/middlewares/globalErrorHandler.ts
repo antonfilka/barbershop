@@ -5,6 +5,7 @@ export const globalErrorHandler = (err: Error, req: Request, res: Response, next
   if (err instanceof BaseError) {
     return sendError(res, err);
   }
+  console.log(err);
   const serverError = new createError.InternalServerError({ ...err });
   console.error(JSON.stringify(serverError.toJSON()));
   return sendError(res, serverError);

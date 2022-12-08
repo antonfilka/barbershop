@@ -1,4 +1,9 @@
-import { TokenEntity, UserEntity } from '../../db/entities';
+import {
+  AppointmentsEntity,
+  TokenEntity,
+  UserEntity,
+  UsersAppointmentsEntity,
+} from '../../db/entities';
 import { UserCreationAttributes } from '../../db/entities/userEntity';
 import { ArrayResponse, Pagination } from '../../interfaces';
 import { UserLoginAttributes, UserUpdateAttributes } from '../../interfaces/users';
@@ -44,12 +49,12 @@ class UserService {
     const userCreateData = {
       ...data,
       password: hashPassword,
-      isActivated: false,
     };
 
     const result = await UserEntity.create(userCreateData);
 
     await tokenService.saveToken(result.id, tokens.refreshToken);
+    console.log('first');
 
     return { ...tokens, user: result };
   }
@@ -132,6 +137,26 @@ class UserService {
       await transaction.rollback();
       throw err;
     }
+  }
+  async getMyAppointments(id: number) {
+    const result = await UsersAppointmentsEntity.findAll({
+      where: { userId: id },
+      include: {
+        model: AppointmentsEntity,
+        as: 'appointment',
+      },
+    });
+
+    return result;
+  }
+  async getAppointments() {
+    const result = await AppointmentsEntity.findAll();
+
+    return result;
+  }
+
+  async createUserAppointment(id: number, date: Date, appointmentId: number) {
+    await UsersAppointmentsEntity.create({ userId: id, appointmentId, date });
   }
 }
 

@@ -1,15 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
+import { Layout } from 'antd';
 import { MainRouter } from 'routers';
-import { Box } from '@mui/material';
-import styles from './styles';
+
+const { Content } = Layout;
 
 export function MainLayout() {
   return (
-    <Box css={styles.mainLayout}>
-      <Box css={styles.main}>
+    <Layout style={{ height: '100vh' }}>
+      <Content style={{ width: '100%' }}>
         <MainRouter />
-      </Box>
-    </Box>
+      </Content>
+    </Layout>
   );
 }

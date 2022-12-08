@@ -1,13 +1,14 @@
 import express from 'express';
-import { schemaValidator } from '../../middlewares';
 import controller from '../users/controller';
-import schema from '../users/schema';
 
 const router = express.Router();
 
-router.post('/sign-up', schemaValidator(schema.createUser), controller.createUser);
-router.post('/sign-in', schemaValidator(schema.loginUser), controller.loginUser);
+router.post('/sign-up', controller.createUser);
+router.post('/sign-in', controller.loginUser);
 router.post('/logout', controller.logoutUser);
 router.get('/refresh', controller.refreshUserToken);
+router.get('/appointments', controller.getAppointments);
+router.post('/appointment', controller.createUserAppointment);
+router.post('/appointment', controller.getMyAppointments);
 
 export default router;
