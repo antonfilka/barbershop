@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "tsc",
-    "start": "node_modules/pm2/bin/pm2-runtime start dist/src/index.js -i 1 --name sunmait-career-day",
+    "start": "node_modules/pm2/bin/pm2-runtime start dist/src/index.js -i 1 --name -barbershop",
     "dev": "nodemon src/index.ts",
     "compose": "docker-compose up",
     "migrate": "cd migrations && ../node_modules/.bin/sequelize db:migrate",

@@ -16,7 +16,7 @@ const server =
 const swagger = {
   openapi: '3.0.0',
   info: {
-    title: 'Sunmait Career Day API',
+    title: 'Barbershop API',
     version: `${pkgJson.version}`,
     description: 'The REST API',
   },
