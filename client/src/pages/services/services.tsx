@@ -78,37 +78,37 @@ export function Services() {
               display: 'flex',
               alignItems: 'center',
               width: '100%',
-              justifyContent: 'space-between',
               mb: '15px',
               boxShadow: '0px 0px 15px rgba(0,0,0,0.2)',
               borderRadius: '15px',
               padding: '10px',
             }}>
-            <Avatar src={appointment.image} sx={{ width: '60px' }} />
+            <Avatar src={appointment.image} sx={{ width: '50px', height: '50px' }} />
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                width: '100%',
               }}>
               <Typography variant="h6">{appointment.name}</Typography>
               <Typography variant="subtitle2">{appointment.description}</Typography>
             </Box>
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: 600, mr: user.isAuthenticated ? '-80px' : '0' }}>
-              {appointment.price}$
-            </Typography>
+            <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
+              <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                {appointment.price}$
+              </Typography>
 
-            {user.isAuthenticated && (
-              <IconButton
-                onClick={() => {
-                  setAppointmentId(appointment.id);
-                  setTimeSelectMode(true);
-                }}>
-                <AddShoppingCartIcon />
-              </IconButton>
-            )}
+              {user.isAuthenticated && (
+                <IconButton
+                  onClick={() => {
+                    setAppointmentId(appointment.id);
+                    setTimeSelectMode(true);
+                  }}>
+                  <AddShoppingCartIcon />
+                </IconButton>
+              )}
+            </Box>
           </Box>
         ))}
       </Box>

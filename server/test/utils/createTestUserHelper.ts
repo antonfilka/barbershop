@@ -4,7 +4,7 @@ import { Roles } from '../../src/interfaces/users';
 import tokenService from '../../src/utils/tokenService';
 import bcrypt from 'bcryptjs';
 
-export const createAdminHelper = async () => {
+export const createTestUserHelper = async () => {
   const adminData = {
     name: 'admin',
     surname: 'admin',

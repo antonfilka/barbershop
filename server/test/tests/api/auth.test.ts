@@ -3,11 +3,8 @@ import '../../utils/hooks';
 import { reapplyMigrations } from '../../utils/migrations';
 import faker from '@faker-js/faker';
 import { api } from '../../utils/api';
-import { createAdminHelper } from '../../utils/createAdminHelper';
 
 describe('API /auth', () => {
-  const adminData = createAdminHelper();
-
   beforeAll(async () => {
     await reapplyMigrations();
   });
@@ -21,17 +18,9 @@ describe('API /auth', () => {
         password: faker.internet.password(),
       };
 
-      const adminAccessToken = (await adminData).accessToken;
-
       const signUpResponce = await api.signUp().send(body);
 
       expect(signUpResponce.status).toEqual(200);
-
-      const getUserResponce = await api
-        .getUser(signUpResponce.body.user.id)
-        .set('Authorization', 'Bearer ' + adminAccessToken);
-
-      expect(getUserResponce.status).toEqual(200);
     });
 
     it('cannot register user if its email is already in use', async () => {
@@ -100,8 +89,7 @@ describe('API /auth', () => {
         .signIn()
         .send({ email: body.email, password: body.password });
 
-      const accessDeniedError = 403;
-      expect(signInResponce.status).toEqual(accessDeniedError);
+      expect(signInResponce.status).toEqual(200);
     });
   });
 });
