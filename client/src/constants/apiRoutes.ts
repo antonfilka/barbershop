@@ -5,6 +5,9 @@ export const AUTH_ROUTES = {
   SIGN_IN: '/auth/sign-in',
   LOGOUT: '/auth/logout',
   REFRESH: '/auth/refresh',
+  APPOINTMENTS: '/auth/appointments',
+  CREATE_APPOINTMENT: '/auth/appointment',
+  MY_APPOINTMENTS: '/auth/my-appointments',
 };
 
 export const USERS_API_ROUTES = {

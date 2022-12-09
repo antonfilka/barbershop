@@ -38,37 +38,87 @@ export function HomePage() {
         <Typography variant="h2" sx={{ fontWeight: 600, color: 'white', mt: '30px' }}>
           Barbershop
         </Typography>
-        <Link to={APP_ROUTES.SERVICES}>
-          <Typography variant="h4" sx={{ fontWeight: 600, color: 'white', mt: '50px' }}>
-            Services
+        {user.isAuthenticated && (
+          <Typography variant="h3" sx={{ fontWeight: 500, color: 'white', mt: '30px' }}>
+            Hi, {user.name}
           </Typography>
-        </Link>
-        {!user.isAuthenticated && (
-          <Link to={APP_ROUTES.SIGN_IN}>
-            <Typography variant="h4" sx={{ fontWeight: 600, color: 'white', mt: '50px' }}>
-              Sign in
+        )}
+        <Box
+          sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mt: '10px' }}>
+          <Link to={APP_ROUTES.SERVICES}>
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 600,
+                color: 'white',
+                mt: '50px',
+                transition: 'all 0.2s ease-in-out',
+                '&:hover': { transform: 'scale(1.1)' },
+              }}>
+              - Services
             </Typography>
           </Link>
-        )}
-        {user.isAuthenticated && (
-          <Link to="/services">
-            <Typography variant="h5" sx={{ fontWeight: 600, color: 'white', mt: '40px' }}>
-              My Appointments
-            </Typography>
-          </Link>
-        )}
-        {user.isAuthenticated && (
-          <Link to="/services">
-            <Typography variant="h5" sx={{ fontWeight: 600, color: 'white', mt: '40px' }}>
-              Referal programm
-            </Typography>
-          </Link>
-        )}
+
+          {!user.isAuthenticated && (
+            <Link to={APP_ROUTES.SIGN_IN}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 600,
+                  color: 'white',
+                  mt: '50px',
+                  transition: 'all 0.2s ease-in-out',
+                  '&:hover': { transform: 'scale(1.1)' },
+                }}>
+                - Sign in
+              </Typography>
+            </Link>
+          )}
+          {user.isAuthenticated && (
+            <Link to={APP_ROUTES.MY_APPOINTMENTS}>
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 600,
+                  color: 'white',
+                  mt: '40px',
+                  transition: 'all 0.2s ease-in-out',
+                  '&:hover': { transform: 'scale(1.1)' },
+                }}>
+                - My Appointments
+              </Typography>
+            </Link>
+          )}
+          {/* {user.isAuthenticated && (
+            <Link to="/services">
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 600,
+                  color: 'white',
+                  mt: '40px',
+                  transition: 'all 0.2s ease-in-out',
+                  '&:hover': { transform: 'scale(1.1)' },
+                }}>
+                - Referal programm
+              </Typography>
+            </Link>
+          )} */}
+        </Box>
         {user.isAuthenticated && (
           <Typography
             onClick={logoutHandler}
             variant="h5"
-            sx={{ fontWeight: 600, color: 'white', mt: '335px', '&:hover': { cursor: 'pointer' } }}>
+            sx={{
+              fontWeight: 600,
+              color: 'white',
+              mt: '235px',
+              '&:hover': {
+                cursor: 'pointer',
+                transition: 'all 0.2s ease-in-out',
+                '&:hover': { transform: 'scale(1.1)' },
+              },
+            }}>
             Log out
           </Typography>
         )}

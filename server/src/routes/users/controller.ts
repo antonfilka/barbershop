@@ -32,8 +32,6 @@ class UsersController {
       httpOnly: true,
     });
 
-    console.log(userData);
-
     res.json(userData);
   }
 
@@ -106,6 +104,7 @@ class UsersController {
     res: Response<unknown, ResponseLocals.AuthenticatedUser>,
     next: NextFunction,
   ): Promise<void> {
+    console.log('first');
     const result = await userService.getAppointments();
 
     res.json({ appointments: result });

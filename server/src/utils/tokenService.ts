@@ -56,7 +56,6 @@ class TokenService {
 
   async saveToken(userId: number, refreshToken: string) {
     await TokenEntity.create({ userId: userId, refreshToken: refreshToken });
-    console.log('ddd');
   }
 
   async removeToken(userId: string, refreshToken: string) {

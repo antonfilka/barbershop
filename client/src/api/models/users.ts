@@ -32,3 +32,30 @@ export type SignInUserDataResponce = {
   refreshToken: string;
   user: UserDataResponce;
 };
+
+export type Appointment = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+};
+
+export type MyAppointment = {
+  date: string;
+  appointment: Appointment;
+};
+
+export type GetAllAppointsResponce = {
+  appointments: Appointment[];
+};
+
+export type GetMyAppointsResponce = {
+  appointments: MyAppointment[];
+};
+
+export type CreateAppointment = {
+  id: string;
+  date: Date;
+  appointmentId: string;
+};

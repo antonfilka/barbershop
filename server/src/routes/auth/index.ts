@@ -9,6 +9,6 @@ router.post('/logout', controller.logoutUser);
 router.get('/refresh', controller.refreshUserToken);
 router.get('/appointments', controller.getAppointments);
 router.post('/appointment', controller.createUserAppointment);
-router.post('/appointment', controller.getMyAppointments);
+router.post('/my-appointments', controller.getMyAppointments);
 
 export default router;

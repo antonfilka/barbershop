@@ -54,7 +54,6 @@ class UserService {
     const result = await UserEntity.create(userCreateData);
 
     await tokenService.saveToken(result.id, tokens.refreshToken);
-    console.log('first');
 
     return { ...tokens, user: result };
   }
